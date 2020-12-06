@@ -33,31 +33,32 @@ impl Map {
         let input = input.into().lines();
 
         let mut map = Map {
-            trees: vec!(),
-            size: Point{ x: 0, y: 0 }
+            trees: vec![],
+            size: Point { x: 0, y: 0 },
         };
-
 
         for (x, line) in input.enumerate() {
             map.size.x = max(x + 1, map.size.x);
             for (y, char) in line.chars().enumerate() {
                 map.size.y = max(y + 1, map.size.y);
                 if char == '#' {
-                    map.trees.push(Point{x, y});
+                    map.trees.push(Point { x, y });
                 }
             }
         }
-
 
         map
     }
 
     pub fn extend_point(&self, tree: &Point) -> Point {
-        Point { x: tree.x, y: tree.y + self.size.y }
+        Point {
+            x: tree.x,
+            y: tree.y + self.size.y,
+        }
     }
 
     pub fn extend(mut self) -> Map {
-        let mut new_trees = vec!();
+        let mut new_trees = vec![];
 
         for tree in self.trees.iter() {
             new_trees.push(self.extend_point(tree));
@@ -78,7 +79,7 @@ impl Map {
     }
 
     pub fn has_tree_at(&self, p: Point) -> bool {
-        self.trees.iter().any(|tree| {*tree == p})
+        self.trees.iter().any(|tree| *tree == p)
     }
 
     pub fn traverse(&self, direction: Point) -> usize {
@@ -86,7 +87,7 @@ impl Map {
         for x in (0..self.size.x).step_by(direction.x) {
             let y = x * direction.y / direction.x;
             assert!(y < self.size.y);
-            if self.has_tree_at(Point{x, y}) {
+            if self.has_tree_at(Point { x, y }) {
                 count = count + 1
             }
         }
@@ -107,8 +108,15 @@ mod tests {
 
         let map = Map::from_text(text);
 
-        assert_eq!(map.size, Point{x:3, y:3});
-        assert_eq!(map.trees, vec![Point{x: 0, y: 2},Point{x: 1, y: 0},Point{x: 2, y: 1}]);
+        assert_eq!(map.size, Point { x: 3, y: 3 });
+        assert_eq!(
+            map.trees,
+            vec![
+                Point { x: 0, y: 2 },
+                Point { x: 1, y: 0 },
+                Point { x: 2, y: 1 }
+            ]
+        );
     }
 
     #[test]
@@ -128,8 +136,18 @@ mod tests {
         let expected_map = Map::from_text(expected_text);
 
         assert_eq!(map.size, expected_map.size);
-        assert_eq!({let mut list = map.trees.clone(); list.sort(); list},
-                   {let mut list = expected_map.trees.clone(); list.sort(); list});
+        assert_eq!(
+            {
+                let mut list = map.trees.clone();
+                list.sort();
+                list
+            },
+            {
+                let mut list = expected_map.trees.clone();
+                list.sort();
+                list
+            }
+        );
     }
 
     #[test]
@@ -138,10 +156,10 @@ mod tests {
         let map = Map::from_text(text);
         let map = map.extend().extend().extend();
 
-        assert_eq!(map.traverse(Point{x:1, y:1}), 2);
-        assert_eq!(map.traverse(Point{x:1, y:3}), 7);
-        assert_eq!(map.traverse(Point{x:1, y:5}), 3);
-        assert_eq!(map.traverse(Point{x:1, y:7}), 4);
-        assert_eq!(map.traverse(Point{x:2, y:1}), 2);
+        assert_eq!(map.traverse(Point { x: 1, y: 1 }), 2);
+        assert_eq!(map.traverse(Point { x: 1, y: 3 }), 7);
+        assert_eq!(map.traverse(Point { x: 1, y: 5 }), 3);
+        assert_eq!(map.traverse(Point { x: 1, y: 7 }), 4);
+        assert_eq!(map.traverse(Point { x: 2, y: 1 }), 2);
     }
 }

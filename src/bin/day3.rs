@@ -22,8 +22,8 @@ fn main() {
 
     let text = std::fs::read_to_string("data/input-day-3.txt").unwrap();
     let map = Map::from_text(text.as_str());
-    let map = map.auto_extend(Point{x:1, y:3});
-    let count = map.traverse(Point{x:1, y:3});
+    let map = map.auto_extend(Point { x: 1, y: 3 });
+    let count = map.traverse(Point { x: 1, y: 3 });
 
     println!("Trees encountered: {}", count);
 
@@ -31,12 +31,15 @@ fn main() {
 
     let text = std::fs::read_to_string("data/input-day-3.txt").unwrap();
     let map = Map::from_text(text.as_str());
-    let map = map.auto_extend(Point{x:1, y:7});
-    let count1 = map.traverse(Point{x:1, y:1});
-    let count2 = map.traverse(Point{x:1, y:3});
-    let count3 = map.traverse(Point{x:1, y:5});
-    let count4 = map.traverse(Point{x:1, y:7});
-    let count5 = map.traverse(Point{x:2, y:1});
+    let map = map.auto_extend(Point { x: 1, y: 7 });
+    let count1 = map.traverse(Point { x: 1, y: 1 });
+    let count2 = map.traverse(Point { x: 1, y: 3 });
+    let count3 = map.traverse(Point { x: 1, y: 5 });
+    let count4 = map.traverse(Point { x: 1, y: 7 });
+    let count5 = map.traverse(Point { x: 2, y: 1 });
 
-    println!("Multiplied trees encountered: {}", count1 * count2 * count3 * count4 * count5);
+    println!(
+        "Multiplied trees encountered: {}",
+        count1 * count2 * count3 * count4 * count5
+    );
 }

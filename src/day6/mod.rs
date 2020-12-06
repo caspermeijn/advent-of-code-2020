@@ -15,9 +15,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use std::string::String;
-use nom::AsChar;
 use itertools::Itertools;
+use nom::AsChar;
+use std::string::String;
 
 #[derive(Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd)]
 pub struct DeclarationForm {
@@ -26,19 +26,29 @@ pub struct DeclarationForm {
 
 impl DeclarationForm {
     pub fn parse_part1(text: &str) -> Vec<DeclarationForm> {
-        text.split("\n\n").map(|form_text|{
-            DeclarationForm{ answers: form_text.chars().filter(|c| c.is_alpha()).unique().collect() }
-        }).collect()
+        text.split("\n\n")
+            .map(|form_text| DeclarationForm {
+                answers: form_text
+                    .chars()
+                    .filter(|c| c.is_alpha())
+                    .unique()
+                    .collect(),
+            })
+            .collect()
     }
 
     pub fn parse_part2(text: &str) -> Vec<DeclarationForm> {
         let possible_answers: String = ('a'..='z').collect();
-        text.split("\n\n").map(|form_text|{
-            let answers = form_text.lines().fold(possible_answers.clone(), |answers, line| {
-                answers.chars().filter(|c| line.contains(*c)).collect()
-            });
-            DeclarationForm{ answers }
-        }).collect()
+        text.split("\n\n")
+            .map(|form_text| {
+                let answers = form_text
+                    .lines()
+                    .fold(possible_answers.clone(), |answers, line| {
+                        answers.chars().filter(|c| line.contains(*c)).collect()
+                    });
+                DeclarationForm { answers }
+            })
+            .collect()
     }
 }
 

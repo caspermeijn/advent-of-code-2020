@@ -23,13 +23,19 @@ fn main() {
     let text = std::fs::read_to_string("data/input-day-4.txt").unwrap();
     let passport_list = Passport::parse_text(text.as_str());
 
-    let count = passport_list.iter().filter(|passport| passport.fields_valid()).count();
+    let count = passport_list
+        .iter()
+        .filter(|passport| passport.fields_valid())
+        .count();
 
     println!("Passports with valid fields: {}", count);
 
     println!("Part 2");
 
-    let count = passport_list.iter().filter(|passport| passport.data_valid()).count();
+    let count = passport_list
+        .iter()
+        .filter(|passport| passport.data_valid())
+        .count();
 
     println!("Passports with valid data: {}", count);
 }
