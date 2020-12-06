@@ -25,7 +25,7 @@ pub struct SeatNumber {
 impl SeatNumber {
     pub fn from(text: &str) -> SeatNumber {
         SeatNumber {
-            seat_number: String::from(text)
+            seat_number: String::from(text),
         }
     }
 
@@ -41,9 +41,13 @@ impl SeatNumber {
     }
 
     pub fn get_row_column(&self) -> (u32, u32) {
-        let row = self.seat_number.as_str()[..7].chars().fold((0, 127), Self::accumulator);
+        let row = self.seat_number.as_str()[..7]
+            .chars()
+            .fold((0, 127), Self::accumulator);
         assert_eq!(row.0, row.1);
-        let column = self.seat_number.as_str()[7..].chars().fold((0, 7), Self::accumulator);
+        let column = self.seat_number.as_str()[7..]
+            .chars()
+            .fold((0, 7), Self::accumulator);
         assert_eq!(column.0, column.1);
         (row.0, column.0)
     }

@@ -31,7 +31,7 @@ pub struct Passport {
 
 impl Passport {
     pub fn parse_text(text: &str) -> Vec<Passport> {
-        let mut passport_list = vec!();
+        let mut passport_list = vec![];
         let mut passport = Passport::default();
         for line in text.lines() {
             if line.is_empty() {
@@ -45,56 +45,56 @@ impl Passport {
                     match key {
                         "byr" => {
                             passport.birth_year = Some(String::from(value));
-                        },
+                        }
                         "iyr" => {
                             passport.issue_year = Some(String::from(value));
-                        },
+                        }
                         "eyr" => {
                             passport.expiration_year = Some(String::from(value));
-                        },
+                        }
                         "hgt" => {
                             passport.height = Some(String::from(value));
-                        },
+                        }
                         "hcl" => {
                             passport.hair_color = Some(String::from(value));
-                        },
+                        }
                         "ecl" => {
                             passport.eye_color = Some(String::from(value));
-                        },
+                        }
                         "pid" => {
                             passport.passport_id = Some(String::from(value));
-                        },
+                        }
                         "cid" => {
                             passport.country_id = Some(String::from(value));
-                        },
-                        _ => panic!("Invalid field key")
+                        }
+                        _ => panic!("Invalid field key"),
                     }
                 }
             }
         }
-        passport_list.push(passport.clone());
+        passport_list.push(passport);
         passport_list
     }
 
     pub fn fields_valid(&self) -> bool {
-        self.passport_id.is_some() &&
-            self.birth_year.is_some() &&
-            self.issue_year.is_some() &&
-            self.expiration_year.is_some() &&
-            self.height.is_some() &&
-            self.hair_color.is_some() &&
-            self.eye_color.is_some()
+        self.passport_id.is_some()
+            && self.birth_year.is_some()
+            && self.issue_year.is_some()
+            && self.expiration_year.is_some()
+            && self.height.is_some()
+            && self.hair_color.is_some()
+            && self.eye_color.is_some()
     }
 
     pub fn data_valid(&self) -> bool {
-        self.fields_valid() &&
-            self.passport_id_valid() &&
-            self.birth_year_valid() &&
-            self.issue_year_valid() &&
-            self.expiration_year_valid() &&
-            self.height_valid() &&
-            self.hair_color_valid() &&
-            self.eye_color_valid()
+        self.fields_valid()
+            && self.passport_id_valid()
+            && self.birth_year_valid()
+            && self.issue_year_valid()
+            && self.expiration_year_valid()
+            && self.height_valid()
+            && self.hair_color_valid()
+            && self.eye_color_valid()
     }
 
     pub fn birth_year_valid(&self) -> bool {
@@ -124,8 +124,7 @@ impl Passport {
     }
     pub fn hair_color_valid(&self) -> bool {
         let hair_color = self.hair_color.as_ref().unwrap();
-        hair_color.starts_with("#") &&
-            i64::from_str_radix(&hair_color[1..], 16).is_ok()
+        hair_color.starts_with('#') && i64::from_str_radix(&hair_color[1..], 16).is_ok()
     }
     pub fn eye_color_valid(&self) -> bool {
         match self.eye_color.as_ref().unwrap().as_str() {
@@ -136,13 +135,12 @@ impl Passport {
             "grn" => true,
             "hzl" => true,
             "oth" => true,
-            _ => false
+            _ => false,
         }
     }
     pub fn passport_id_valid(&self) -> bool {
         let passport_id = self.passport_id.as_ref().unwrap();
-        passport_id.chars().all(|c| c.is_numeric()) &&
-            passport_id.len() == 9
+        passport_id.chars().all(|c| c.is_numeric()) && passport_id.len() == 9
     }
 }
 
@@ -194,7 +192,6 @@ iyr:2011 ecl:brn hgt:59in";
         assert_eq!(passport_list.next().unwrap().fields_valid(), false);
         assert_eq!(passport_list.next().unwrap().fields_valid(), true);
         assert_eq!(passport_list.next().unwrap().fields_valid(), false);
-
     }
 
     #[test]
@@ -223,7 +220,6 @@ iyr:2011 ecl:brn hgt:59in";
 
         passport.height = Some(String::from("190"));
         assert_eq!(passport.height_valid(), false);
-
     }
 
     #[test]
@@ -286,7 +282,6 @@ pid:3556412378 byr:2007";
         assert_eq!(passport_list.next().unwrap().data_valid(), false);
         assert_eq!(passport_list.next().unwrap().data_valid(), false);
         assert_eq!(passport_list.next().unwrap().data_valid(), false);
-
     }
 
     #[test]
@@ -312,6 +307,5 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719";
         assert_eq!(passport_list.next().unwrap().data_valid(), true);
         assert_eq!(passport_list.next().unwrap().data_valid(), true);
         assert_eq!(passport_list.next().unwrap().data_valid(), true);
-
     }
 }

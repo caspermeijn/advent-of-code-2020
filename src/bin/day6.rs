@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use advent_of_code_2020::day5::*;
 use advent_of_code_2020::day6::DeclarationForm;
 
 fn main() {
@@ -24,9 +23,9 @@ fn main() {
     let text = std::fs::read_to_string("data/input-day-6.txt").unwrap();
     let form_list = DeclarationForm::parse_part1(text.as_str());
 
-    let sum = form_list.iter().fold(0, |sum, form| {
-        form.answers.len() + sum
-    });
+    let sum = form_list
+        .iter()
+        .fold(0, |sum, form| form.answers.len() + sum);
 
     println!("Sum of counts: {}", sum);
 
