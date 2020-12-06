@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use advent_of_code_2020::day5::*;
 use advent_of_code_2020::day6::DeclarationForm;
 
 fn main() {

@@ -101,35 +101,35 @@ mod tests {
     #[test]
     fn test_load() {
         let text = "\
-        ..#\
-        #..\
-        .#.";
+..#
+#..
+.#.";
 
         let map = Map::from_text(text);
 
-        assert_eq!(map.trees, vec![Point{x: 0, y: 2},Point{x: 1, y: 0},Point{x: 2, y: 1}]);
         assert_eq!(map.size, Point{x:3, y:3});
+        assert_eq!(map.trees, vec![Point{x: 0, y: 2},Point{x: 1, y: 0},Point{x: 2, y: 1}]);
     }
 
     #[test]
     fn extend() {
         let text = "\
-        ..#\
-        #..\
-        .#.";
+..#
+#..
+.#.";
 
         let map = Map::from_text(text);
         let map = map.extend();
 
         let expected_text = "\
-            ..#..#\
-            #..#..\
-            .#..#.";
+..#..#
+#..#..
+.#..#.";
         let expected_map = Map::from_text(expected_text);
 
+        assert_eq!(map.size, expected_map.size);
         assert_eq!({let mut list = map.trees.clone(); list.sort(); list},
                    {let mut list = expected_map.trees.clone(); list.sort(); list});
-        assert_eq!(map.size, expected_map.size);
     }
 
     #[test]
