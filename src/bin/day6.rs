@@ -15,7 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day3;
-pub mod day4;
-pub mod day5;
-pub mod day6;
+use advent_of_code_2020::day5::*;
+use advent_of_code_2020::day6::DeclarationForm;
+
+fn main() {
+    println!("Part 1");
+
+    let text = std::fs::read_to_string("data/input-day-6.txt").unwrap();
+    let form_list = DeclarationForm::parse_part1(text.as_str());
+
+    let sum = form_list.iter().fold(0, |sum, form| {
+        form.answers.len() + sum
+    });
+
+    println!("Sum of counts: {}", sum);
+
+    println!("Part 2");
+
+    let form_list = DeclarationForm::parse_part2(text.as_str());
+
+    let sum: usize = form_list.iter().map(|form| form.answers.len()).sum();
+
+    println!("Sum of counts: {}", sum);
+}
