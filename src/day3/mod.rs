@@ -88,7 +88,7 @@ impl Map {
             let y = x * direction.y / direction.x;
             assert!(y < self.size.y);
             if self.has_tree_at(Point { x, y }) {
-                count = count + 1
+                count += 1
             }
         }
         count

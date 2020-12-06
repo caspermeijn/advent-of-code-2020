@@ -72,7 +72,7 @@ impl Passport {
                 }
             }
         }
-        passport_list.push(passport.clone());
+        passport_list.push(passport);
         passport_list
     }
 
@@ -124,7 +124,7 @@ impl Passport {
     }
     pub fn hair_color_valid(&self) -> bool {
         let hair_color = self.hair_color.as_ref().unwrap();
-        hair_color.starts_with("#") && i64::from_str_radix(&hair_color[1..], 16).is_ok()
+        hair_color.starts_with('#') && i64::from_str_radix(&hair_color[1..], 16).is_ok()
     }
     pub fn eye_color_valid(&self) -> bool {
         match self.eye_color.as_ref().unwrap().as_str() {

@@ -72,12 +72,12 @@ fn main() {
         let mut count = 0;
         for c in rule.password.chars() {
             if c == rule.letter {
-                count = count + 1;
+                count += 1;
             }
         }
         if count >= rule.min && count <= rule.max {
             // println!("Match");
-            match_count = match_count + 1;
+            match_count += 1;
         }
     }
 
@@ -94,7 +94,7 @@ fn main() {
         let match2 = rule.password.chars().nth(rule.max - 1).unwrap() == rule.letter;
         if match1 ^ match2 {
             // println!("Match");
-            match_count = match_count + 1;
+            match_count += 1;
         }
     }
 
