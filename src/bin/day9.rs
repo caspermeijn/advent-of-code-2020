@@ -15,9 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day3;
-pub mod day4;
-pub mod day5;
-pub mod day6;
-pub mod day8;
-pub mod day9;
+use advent_of_code_2020::day9::*;
+
+fn main() {
+    println!("Part 1");
+
+    let text = std::fs::read_to_string("data/input-day-9.txt").unwrap();
+    let numbers = parse(text.as_str());
+
+    let weakness = find_weakness(25, &numbers).unwrap();
+
+    println!("Weakness: {}", weakness);
+
+    println!("Part 2");
+
+    let exploit = exploit_weakness(weakness, &numbers).unwrap();
+
+    println!("Exploit: {}", exploit);
+}
