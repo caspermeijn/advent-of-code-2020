@@ -15,8 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day3;
-pub mod day4;
-pub mod day5;
-pub mod day6;
-pub mod day8;
+use advent_of_code_2020::day8::*;
+
+fn main() {
+    println!("Part 1");
+
+    let text = std::fs::read_to_string("data/input-day-8.txt").unwrap();
+    let program = Instruction::parse(text.as_str());
+
+    let (acc, _completed) = execute_once(&program);
+
+    println!("accumulator: {}", acc);
+
+    println!("Part 2");
+
+    let mutated_programs = MutatedPrograms::new(program);
+
+    for mutated_program in mutated_programs {
+        let (acc, completed) = execute_once(&mutated_program);
+        if completed {
+            println!("accumulator: {}", acc);
+        }
+    }
+}
