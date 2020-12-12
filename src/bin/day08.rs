@@ -15,10 +15,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day03;
-pub mod day04;
-pub mod day05;
-pub mod day06;
-pub mod day08;
-pub mod day09;
-pub mod day10;
+use advent_of_code_2020::day08::*;
+
+fn main() {
+    let text = include_str!("../../data/input-day-08.txt");
+
+    println!("Part 1");
+
+    let program = Instruction::parse(text);
+
+    let (acc, _completed) = execute_once(&program);
+
+    println!("accumulator: {}", acc);
+
+    println!("Part 2");
+
+    let mutated_programs = MutatedPrograms::new(program);
+
+    for mutated_program in mutated_programs {
+        let (acc, completed) = execute_once(&mutated_program);
+        if completed {
+            println!("accumulator: {}", acc);
+        }
+    }
+}

@@ -15,18 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use std::fs::File;
-use std::io::{BufRead, BufReader};
-
 fn main() {
     println!("Part 1");
-    let f = File::open("data/input-day-1.txt").unwrap();
-    let reader = BufReader::new(f);
+    let text = include_str!("../../data/input-day-01.txt");
 
-    let numbers: Vec<i32> = reader
-        .lines()
-        .map(|line| line.unwrap().parse().unwrap())
-        .collect();
+    let numbers: Vec<i32> = text.lines().map(|line| line.parse().unwrap()).collect();
 
     for num1 in numbers.clone() {
         for num2 in numbers.clone() {

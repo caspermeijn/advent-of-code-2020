@@ -15,21 +15,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use advent_of_code_2020::day9::*;
+use advent_of_code_2020::day04::Passport;
 
 fn main() {
+    let text = include_str!("../../data/input-day-04.txt");
+
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-9.txt").unwrap();
-    let numbers = parse(text.as_str());
+    let passport_list = Passport::parse_text(text);
 
-    let weakness = find_weakness(25, &numbers).unwrap();
+    let count = passport_list
+        .iter()
+        .filter(|passport| passport.fields_valid())
+        .count();
 
-    println!("Weakness: {}", weakness);
+    println!("Passports with valid fields: {}", count);
 
     println!("Part 2");
 
-    let exploit = exploit_weakness(weakness, &numbers).unwrap();
+    let count = passport_list
+        .iter()
+        .filter(|passport| passport.data_valid())
+        .count();
 
-    println!("Exploit: {}", exploit);
+    println!("Passports with valid data: {}", count);
 }

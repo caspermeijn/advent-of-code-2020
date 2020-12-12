@@ -152,7 +152,7 @@ mod tests {
 
     #[test]
     fn traverse() {
-        let text = include_str!("../../data/test-day-3.txt");
+        let text = include_str!("../../data/test-day-03.txt");
         let map = Map::from_text(text);
         let map = map.extend().extend().extend();
 
