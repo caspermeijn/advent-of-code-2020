@@ -15,10 +15,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day10;
-pub mod day3;
-pub mod day4;
-pub mod day5;
-pub mod day6;
-pub mod day8;
-pub mod day9;
+use advent_of_code_2020::day10::*;
+
+fn main() {
+    println!("Part 1");
+
+    let text = std::fs::read_to_string("data/input-day-10.txt").unwrap();
+    let numbers = parse(text.as_str());
+    let diff_map = find_diffs(&numbers);
+    let multiplied = *diff_map.get(&1).unwrap() * *diff_map.get(&3).unwrap();
+    assert_eq!(diff_map.get(&2), None);
+
+    println!("Multiplied differences: {}", multiplied);
+
+    println!("Part 2");
+
+    let distinct_arrangements = find_distinct_arrangements(&numbers, None);
+
+    println!("distinct_arrangements: {}", distinct_arrangements);
+}
