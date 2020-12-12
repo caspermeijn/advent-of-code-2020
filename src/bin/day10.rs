@@ -18,10 +18,11 @@
 use advent_of_code_2020::day10::*;
 
 fn main() {
+    let text = include_str!("../../data/input-day-10.txt");
+
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-10.txt").unwrap();
-    let numbers = parse(text.as_str());
+    let numbers = parse(text);
     let diff_map = find_diffs(&numbers);
     let multiplied = *diff_map.get(&1).unwrap() * *diff_map.get(&3).unwrap();
     assert_eq!(diff_map.get(&2), None);

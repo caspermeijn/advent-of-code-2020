@@ -18,10 +18,11 @@
 use advent_of_code_2020::day04::Passport;
 
 fn main() {
+    let text = include_str!("../../data/input-day-04.txt");
+
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-04.txt").unwrap();
-    let passport_list = Passport::parse_text(text.as_str());
+    let passport_list = Passport::parse_text(text);
 
     let count = passport_list
         .iter()

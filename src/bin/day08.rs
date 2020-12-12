@@ -18,10 +18,11 @@
 use advent_of_code_2020::day08::*;
 
 fn main() {
+    let text = include_str!("../../data/input-day-08.txt");
+
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-08.txt").unwrap();
-    let program = Instruction::parse(text.as_str());
+    let program = Instruction::parse(text);
 
     let (acc, _completed) = execute_once(&program);
 

@@ -18,10 +18,11 @@
 use advent_of_code_2020::day06::DeclarationForm;
 
 fn main() {
+    let text = include_str!("../../data/input-day-06.txt");
+
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-06.txt").unwrap();
-    let form_list = DeclarationForm::parse_part1(text.as_str());
+    let form_list = DeclarationForm::parse_part1(text);
 
     let sum = form_list
         .iter()
@@ -31,7 +32,7 @@ fn main() {
 
     println!("Part 2");
 
-    let form_list = DeclarationForm::parse_part2(text.as_str());
+    let form_list = DeclarationForm::parse_part2(text);
 
     let sum: usize = form_list.iter().map(|form| form.answers.len()).sum();
 

@@ -18,10 +18,11 @@
 use advent_of_code_2020::day09::*;
 
 fn main() {
+    let text = include_str!("../../data/input-day-09.txt");
+
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-09.txt").unwrap();
-    let numbers = parse(text.as_str());
+    let numbers = parse(text);
 
     let weakness = find_weakness(25, &numbers).unwrap();
 

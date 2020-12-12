@@ -15,10 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use std::fs::File;
-use std::io::{BufRead, BufReader};
-use std::string::String;
-
 use nom::character::streaming::alpha1;
 use nom::character::streaming::char;
 use nom::character::streaming::digit1;
@@ -59,14 +55,13 @@ fn parser(i: &str) -> IResult<&str, Rule> {
 
 fn main() {
     println!("Part 1");
-    let f = File::open("data/input-day-02.txt").unwrap();
-    let reader = BufReader::new(f);
+    let text = include_str!("../../data/input-day-02.txt");
 
-    let lines: Vec<String> = reader.lines().map(|x| x.unwrap()).collect();
+    let lines: Vec<&str> = text.lines().collect();
 
     let mut match_count = 0;
-    for line in lines.clone() {
-        let (_, rule) = parser(line.as_str()).unwrap();
+    for line in &lines {
+        let (_, rule) = parser(line).unwrap();
         // println!("{}-{} {}: {}", rule.min, rule.max, rule.letter, rule.password);
 
         let mut count = 0;
@@ -86,8 +81,8 @@ fn main() {
     println!("Part 2");
 
     let mut match_count = 0;
-    for line in lines.clone() {
-        let (_, rule) = parser(line.as_str()).unwrap();
+    for line in &lines {
+        let (_, rule) = parser(line).unwrap();
         // println!("{}-{} {}: {}", rule.min, rule.max, rule.letter, rule.password);
 
         let match1 = rule.password.chars().nth(rule.min - 1).unwrap() == rule.letter;

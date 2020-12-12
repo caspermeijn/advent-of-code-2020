@@ -18,9 +18,10 @@
 use advent_of_code_2020::day05::*;
 
 fn main() {
+    let text = include_str!("../../data/input-day-05.txt");
+
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-05.txt").unwrap();
     let seat_numbers: Vec<SeatNumber> = text.lines().map(|line| SeatNumber::from(line)).collect();
 
     let highest_seat_id = seat_numbers
