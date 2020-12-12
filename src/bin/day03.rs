@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use advent_of_code_2020::day3::*;
+use advent_of_code_2020::day03::*;
 
 fn main() {
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-3.txt").unwrap();
+    let text = std::fs::read_to_string("data/input-day-03.txt").unwrap();
     let map = Map::from_text(text.as_str());
     let map = map.auto_extend(Point { x: 1, y: 3 });
     let count = map.traverse(Point { x: 1, y: 3 });
@@ -29,7 +29,7 @@ fn main() {
 
     println!("Part 2");
 
-    let text = std::fs::read_to_string("data/input-day-3.txt").unwrap();
+    let text = std::fs::read_to_string("data/input-day-03.txt").unwrap();
     let map = Map::from_text(text.as_str());
     let map = map.auto_extend(Point { x: 1, y: 7 });
     let count1 = map.traverse(Point { x: 1, y: 1 });

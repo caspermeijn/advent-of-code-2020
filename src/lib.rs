@@ -15,10 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+pub mod day03;
+pub mod day04;
+pub mod day05;
+pub mod day06;
+pub mod day08;
+pub mod day09;
 pub mod day10;
-pub mod day3;
-pub mod day4;
-pub mod day5;
-pub mod day6;
-pub mod day8;
-pub mod day9;

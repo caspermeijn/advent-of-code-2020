@@ -8,39 +8,39 @@ Files: Cargo.lock
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/input-day-1.txt
+Files: data/input-day-01.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/input-day-2.txt
+Files: data/input-day-02.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/input-day-3.txt
+Files: data/input-day-03.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/test-day-3.txt
+Files: data/test-day-03.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/input-day-4.txt
+Files: data/input-day-04.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/input-day-5.txt
+Files: data/input-day-05.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/input-day-6.txt
+Files: data/input-day-06.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/input-day-8.txt
+Files: data/input-day-08.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 
-Files: data/input-day-9.txt
+Files: data/input-day-09.txt
 Copyright: (C) 2020 Casper Meijn <casper@meijn.net>
 License: CC0-1.0
 

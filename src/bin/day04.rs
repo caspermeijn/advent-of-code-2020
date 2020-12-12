@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use advent_of_code_2020::day4::Passport;
+use advent_of_code_2020::day04::Passport;
 
 fn main() {
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-4.txt").unwrap();
+    let text = std::fs::read_to_string("data/input-day-04.txt").unwrap();
     let passport_list = Passport::parse_text(text.as_str());
 
     let count = passport_list

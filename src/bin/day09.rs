@@ -15,26 +15,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use advent_of_code_2020::day8::*;
+use advent_of_code_2020::day09::*;
 
 fn main() {
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-8.txt").unwrap();
-    let program = Instruction::parse(text.as_str());
+    let text = std::fs::read_to_string("data/input-day-09.txt").unwrap();
+    let numbers = parse(text.as_str());
 
-    let (acc, _completed) = execute_once(&program);
+    let weakness = find_weakness(25, &numbers).unwrap();
 
-    println!("accumulator: {}", acc);
+    println!("Weakness: {}", weakness);
 
     println!("Part 2");
 
-    let mutated_programs = MutatedPrograms::new(program);
+    let exploit = exploit_weakness(weakness, &numbers).unwrap();
 
-    for mutated_program in mutated_programs {
-        let (acc, completed) = execute_once(&mutated_program);
-        if completed {
-            println!("accumulator: {}", acc);
-        }
-    }
+    println!("Exploit: {}", exploit);
 }

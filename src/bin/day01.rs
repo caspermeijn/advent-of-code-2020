@@ -20,7 +20,7 @@ use std::io::{BufRead, BufReader};
 
 fn main() {
     println!("Part 1");
-    let f = File::open("data/input-day-1.txt").unwrap();
+    let f = File::open("data/input-day-01.txt").unwrap();
     let reader = BufReader::new(f);
 
     let numbers: Vec<i32> = reader

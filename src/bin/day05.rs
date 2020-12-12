@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use advent_of_code_2020::day5::*;
+use advent_of_code_2020::day05::*;
 
 fn main() {
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-5.txt").unwrap();
+    let text = std::fs::read_to_string("data/input-day-05.txt").unwrap();
     let seat_numbers: Vec<SeatNumber> = text.lines().map(|line| SeatNumber::from(line)).collect();
 
     let highest_seat_id = seat_numbers

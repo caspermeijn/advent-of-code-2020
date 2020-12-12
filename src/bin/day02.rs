@@ -59,7 +59,7 @@ fn parser(i: &str) -> IResult<&str, Rule> {
 
 fn main() {
     println!("Part 1");
-    let f = File::open("data/input-day-2.txt").unwrap();
+    let f = File::open("data/input-day-02.txt").unwrap();
     let reader = BufReader::new(f);
 
     let lines: Vec<String> = reader.lines().map(|x| x.unwrap()).collect();

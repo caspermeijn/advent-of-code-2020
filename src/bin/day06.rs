@@ -15,12 +15,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use advent_of_code_2020::day6::DeclarationForm;
+use advent_of_code_2020::day06::DeclarationForm;
 
 fn main() {
     println!("Part 1");
 
-    let text = std::fs::read_to_string("data/input-day-6.txt").unwrap();
+    let text = std::fs::read_to_string("data/input-day-06.txt").unwrap();
     let form_list = DeclarationForm::parse_part1(text.as_str());
 
     let sum = form_list
