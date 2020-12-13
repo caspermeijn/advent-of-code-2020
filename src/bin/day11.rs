@@ -15,11 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day03;
-pub mod day04;
-pub mod day05;
-pub mod day06;
-pub mod day08;
-pub mod day09;
-pub mod day10;
-pub mod day11;
+use advent_of_code_2020::day11::*;
+
+fn main() {
+    let text = include_str!("../../data/input-day-11.txt");
+
+    println!("Part 1");
+
+    let floor_plan = FloorPlan::parse(text);
+    let evolution = floor_plan.get_stable_evolution();
+
+    let occupied_seats = evolution.get_number_of_occupied_seat();
+
+    println!("Occupied seats: {}", occupied_seats);
+
+    println!("Part 2");
+
+    let evolution = floor_plan.get_stable_evolution_part2();
+
+    let occupied_seats = evolution.get_number_of_occupied_seat();
+
+    println!("Occupied seats: {}", occupied_seats);
+}
