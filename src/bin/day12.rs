@@ -15,12 +15,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day03;
-pub mod day04;
-pub mod day05;
-pub mod day06;
-pub mod day08;
-pub mod day09;
-pub mod day10;
-pub mod day11;
-pub mod day12;
+use advent_of_code_2020::day12::*;
+
+fn main() {
+    let text = include_str!("../../data/input-day-12.txt");
+
+    println!("Part 1");
+
+    let mut own_ship = OwnShip::new();
+
+    text.lines().for_each(|instruction| {
+        own_ship.execute(instruction);
+    });
+
+    let distance = own_ship.get_manhattan_distance();
+
+    println!("Distance: {}", distance);
+
+    println!("Part 2");
+
+    let mut own_ship = OwnShip::new();
+
+    text.lines().for_each(|instruction| {
+        own_ship.execute_part2(instruction);
+    });
+
+    let distance = own_ship.get_manhattan_distance();
+
+    println!("Distance: {}", distance);
+}
