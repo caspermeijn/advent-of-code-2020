@@ -15,14 +15,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day03;
-pub mod day04;
-pub mod day05;
-pub mod day06;
-pub mod day08;
-pub mod day09;
-pub mod day10;
-pub mod day11;
-pub mod day12;
-pub mod day13;
-pub mod day15;
+use advent_of_code_2020::day13::*;
+
+fn main() {
+    let text = include_str!("../../data/input-day-13.txt");
+
+    println!("Part 1");
+
+    let schedule = Schedule::parse(text);
+
+    let (time_till_next_bus, available_bus) = schedule.get_earliest_bus();
+
+    println!("Bus id: {}", time_till_next_bus * available_bus);
+
+    println!("Part 2");
+
+    let contest_answer = schedule.get_contest_answer();
+
+    println!("Contest answer: {}", contest_answer);
+}
