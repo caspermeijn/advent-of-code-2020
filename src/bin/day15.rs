@@ -15,13 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day03;
-pub mod day04;
-pub mod day05;
-pub mod day06;
-pub mod day08;
-pub mod day09;
-pub mod day10;
-pub mod day11;
-pub mod day12;
-pub mod day15;
+use advent_of_code_2020::day15::*;
+
+fn main() {
+    let mut game = MemoryGame::new(&[11, 18, 0, 20, 1, 7, 16]);
+
+    let number_2020 = game.speak_nth_number(2020);
+    println!("Number at 2020: {}", number_2020.spoken_number);
+
+    let number_30million = game.speak_nth_number(30000000);
+    println!("Number at 30000000: {}", number_30million.spoken_number);
+}
