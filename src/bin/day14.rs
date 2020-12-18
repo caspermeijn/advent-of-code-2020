@@ -15,15 +15,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-pub mod day03;
-pub mod day04;
-pub mod day05;
-pub mod day06;
-pub mod day08;
-pub mod day09;
-pub mod day10;
-pub mod day11;
-pub mod day12;
-pub mod day13;
-pub mod day14;
-pub mod day15;
+use advent_of_code_2020::day14::*;
+
+fn main() {
+    let text = include_str!("../../data/input-day-14.txt");
+
+    println!("Part 1");
+
+    let memory = Memory::parse(text);
+    let sum = memory.get_sum();
+
+    println!("Memory sum: {}", sum);
+
+    println!("Part 2");
+
+    let memory = Memory::parse_part2(text);
+    let sum = memory.get_sum();
+
+    println!("Memory sum: {}", sum);
+}
